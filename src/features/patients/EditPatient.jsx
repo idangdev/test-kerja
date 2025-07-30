@@ -12,8 +12,8 @@ function EditPatient() {
   function onSubmit(data) {
     console.log(data);
 
-    editPatient({ data, id });
-    // navigate("/home");
+    editPatient({ newData: { ...data }, id });
+    navigate("/home");
   }
 
   function onError(errors) {
