@@ -85,9 +85,12 @@ function Home() {
                 >
                   Detail
                 </NavLink>
-                <button className="px-2 py-1 bg-blue-400 rounded-md">
+                <NavLink
+                  to={`/edit/${patient.id}`}
+                  className="px-2 py-1 bg-blue-400 rounded-md"
+                >
                   Update
-                </button>
+                </NavLink>
                 <button
                   className="px-2 py-1 bg-red-400 rounded-md"
                   onClick={() => handleDelete(patient.id)}

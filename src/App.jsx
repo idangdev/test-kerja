@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import DetailPatients from "./features/patients/DetailPatients";
 import AddPatient from "./features/patients/AddPatient";
 import { Toaster } from "react-hot-toast";
+import EditPatient from "./features/patients/EditPatient";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -27,6 +28,7 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/add" element={<AddPatient />} />
             <Route path="/detail/:id" element={<DetailPatients />} />
+            <Route path="/edit/:id" element={<EditPatient />} />
           </Route>
         </Routes>
       </BrowserRouter>

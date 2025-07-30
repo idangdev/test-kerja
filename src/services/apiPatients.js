@@ -47,3 +47,21 @@ export async function addPatient(newPatient) {
 
   return data;
 }
+
+export async function editPatient(newData, id) {
+  const res = await fetch(`http://localhost:3002/patients/${id} `, {
+    method: "PUT",
+    body: JSON.stringify(newData),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error("Patient could not be edited");
+  }
+
+  const data = await res.json();
+
+  return data;
+}

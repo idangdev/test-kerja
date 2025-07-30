@@ -1,29 +1,30 @@
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { useAddPatient } from "./useAddPatient";
-import { useNavigate } from "react-router-dom";
+import { useEditPatient } from "./useEditPatient";
+import { useNavigate, useParams } from "react-router-dom";
 
-function AddPatient() {
+function EditPatient() {
   const { register, handleSubmit } = useForm();
-  const { addPatient, isAdding } = useAddPatient();
+  const { id } = useParams();
+  const { editPatient, isEditing } = useEditPatient();
   const navigate = useNavigate();
 
   function onSubmit(data) {
     console.log(data);
 
-    addPatient({ ...data });
-    navigate("/home");
+    editPatient({ data, id });
+    // navigate("/home");
   }
 
   function onError(errors) {
     console.error(errors);
   }
 
-  if (isAdding) return <div>Loading...</div>;
+  if (isEditing) return <div>Loading...</div>;
 
   return (
     <div className="flex flex-col p-10 gap-3">
-      <h2 className="font-semibold text-lg">ADD PATIENT</h2>
+      <h2 className="font-semibold text-lg">EDIT PATIENT</h2>
 
       <form onSubmit={handleSubmit(onSubmit, onError)}>
         <div className="flex flex-col gap-1">
@@ -33,7 +34,7 @@ function AddPatient() {
             id="nama"
             type="text"
             placeholder="Nama"
-            {...register("nama", { required: "This field is required" })}
+            {...register("nama")}
           />
         </div>
 
@@ -44,7 +45,7 @@ function AddPatient() {
             id="alamat"
             type="text"
             placeholder="Alamat"
-            {...register("alamat", { required: "This field is required" })}
+            {...register("alamat")}
           />
         </div>
 
@@ -55,9 +56,7 @@ function AddPatient() {
             id="golonganDarah"
             type="text"
             placeholder="Golongan Darah"
-            {...register("golonganDarah", {
-              required: "This field is required",
-            })}
+            {...register("golonganDarah")}
           />
         </div>
 
@@ -68,9 +67,7 @@ function AddPatient() {
             id="agama"
             type="text"
             placeholder="Agama"
-            {...register("agama", {
-              required: "This field is required",
-            })}
+            {...register("agama")}
           />
         </div>
 
@@ -81,9 +78,7 @@ function AddPatient() {
             id="namaAyah"
             type="text"
             placeholder="Nama Ayah"
-            {...register("namaAyah", {
-              required: "This field is required",
-            })}
+            {...register("namaAyah")}
           />
         </div>
 
@@ -94,9 +89,7 @@ function AddPatient() {
             id="namaIbuKandung"
             type="text"
             placeholder="Nama Ibu Kandung"
-            {...register("namaIbuKandung", {
-              required: "This field is required",
-            })}
+            {...register("namaIbuKandung")}
           />
         </div>
 
@@ -107,9 +100,7 @@ function AddPatient() {
             id="noTelepon"
             type="text"
             placeholder="No Telepon"
-            {...register("noTelepon", {
-              required: "This field is required",
-            })}
+            {...register("noTelepon")}
           />
         </div>
 
@@ -120,9 +111,7 @@ function AddPatient() {
             id="pendidikan"
             type="text"
             placeholder="Pendidikan"
-            {...register("pendidikan", {
-              required: "This field is required",
-            })}
+            {...register("pendidikan")}
           />
         </div>
 
@@ -133,9 +122,7 @@ function AddPatient() {
             id="statusPernikahan"
             type="text"
             placeholder="Status Pernikahan"
-            {...register("statusPernikahan", {
-              required: "This field is required",
-            })}
+            {...register("statusPernikahan")}
           />
         </div>
 
@@ -146,9 +133,7 @@ function AddPatient() {
             id="sukuBangsa"
             type="text"
             placeholder="Suku Bangsa"
-            {...register("sukuBangsa", {
-              required: "This field is required",
-            })}
+            {...register("sukuBangsa")}
           />
         </div>
 
@@ -159,9 +144,7 @@ function AddPatient() {
             id="tanggalLahir"
             type="text"
             placeholder="Tanggal Lahir"
-            {...register("tanggalLahir", {
-              required: "This field is required",
-            })}
+            {...register("tanggalLahir")}
           />
         </div>
 
@@ -172,18 +155,16 @@ function AddPatient() {
             id="tempatLahir"
             type="text"
             placeholder="Tempat Lahir"
-            {...register("tempatLahir", {
-              required: "This field is required",
-            })}
+            {...register("tempatLahir")}
           />
         </div>
 
         <div>
-          <button>Create</button>
+          <button>Edit</button>
         </div>
       </form>
     </div>
   );
 }
 
-export default AddPatient;
+export default EditPatient;
