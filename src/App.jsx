@@ -1,10 +1,10 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import AppLayout from "./ui/AppLayout";
-import Home from "./pages/Home";
-import Bookings from "./pages/Bookings";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import DoctorDetail from "./features/doctors/DoctorDetail";
+import Home from "./pages/Home";
+import DetailPatients from "./features/patients/DetailPatients";
+import AddPatient from "./features/patients/AddPatient";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -24,8 +24,8 @@ function App() {
           <Route element={<AppLayout />}>
             <Route index element={<Navigate replace to="home" />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/bookings" element={<Bookings />} />
-            <Route path="/doctor" element={<DoctorDetail />} />
+            <Route path="/add" element={<AddPatient />} />
+            <Route path="/detail/:id" element={<DetailPatients />} />
           </Route>
         </Routes>
       </BrowserRouter>

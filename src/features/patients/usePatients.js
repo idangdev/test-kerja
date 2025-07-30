@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { getDoctors } from "../../services/apiDoctors";
+import { getPatients } from "../../services/apiPatients";
 
-export function useDoctors() {
+export function usePatients() {
   const { isLoading, data, error } = useQuery({
-    queryKey: ["doctors"],
-    queryFn: getDoctors,
+    queryKey: ["patients"],
+    queryFn: getPatients,
   });
 
   return { isLoading, data, error };
